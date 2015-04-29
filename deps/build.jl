@@ -14,6 +14,7 @@ provides(BuildProcess,
                    ChangeDirectory("xgboost")
                    FileRule(joinpath(prefix,"lib","libxgboostwrapper.so"), @build_steps begin
                        `git checkout master`
+		       `bash ../use-gcc-4.9.sh`
                        `bash build.sh`
                        `cp wrapper/libxgboostwrapper.so $prefix/lib`               
                    end)
